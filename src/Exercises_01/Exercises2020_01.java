@@ -1,5 +1,5 @@
 package Exercises_01;
-
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exercises2020_01 {
@@ -10,14 +10,18 @@ public class Exercises2020_01 {
         int step;
         Scanner scanner = new Scanner(System.in);
         int answer;
-//        gesser(guess, up, low, step = 1, answer = 51, scanner);
+        gesser(guess, up, low, step = 1, answer = 51, scanner);
 //        sequence();
 //        task5Lottery(1111);
 //        task5Lottery(1112);
 //        task5Lottery(7777);
 //        task5Lottery(3333);
 //        task5Lottery(4444);
-        task6RevGuess();
+//        task6RevGuess();
+        int[] ewffweh = new int[]{0,12,14,22,69};
+        int[] ewffweh2 = new int[]{0,12,14,22,69};
+        Arrays.compareUnsigned(ewffweh,ewffweh2);
+        //erkhtoerth+25
 
 
     }
@@ -51,7 +55,6 @@ public class Exercises2020_01 {
             }
         }
         System.out.println("Система угадала разработчик доволен");
-        return;
     }
 
     static void sequence() {
@@ -85,14 +88,14 @@ public class Exercises2020_01 {
             case 1111:
             case 2222:
             case 3333:
-                System.out.println(" You priaze ia a book!");
+                System.out.println(" You prize is a book!");
                 break;
             case 4444:
             case 5555:
-                System.out.println(" You priaze ia a phone!");
+                System.out.println(" You prize is a phone!");
                 break;
             case 7777:
-                System.out.println(" You priaze ia a Laptop!!");
+                System.out.println(" You prize is a Laptop!!");
                 break;
             default:
                 System.out.println(" You sorry no prize for you today");
