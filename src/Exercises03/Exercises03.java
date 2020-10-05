@@ -1,9 +1,9 @@
-package Exercises_03;
+package Exercises03;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Exercises_03 {
+public class Exercises03 {
     public static void main(String[] args) {
         System.out.println("03 works");
 //        task1();

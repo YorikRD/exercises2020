@@ -1,9 +1,8 @@
-package Exercises_02;
+package Exercises02;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Exercises_02 {
+public class Exercises02 {
     public static void main(String[] args) {
 
         int[] arr1 = new int[]{-40, -20, 1300, -12};

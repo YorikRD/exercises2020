@@ -1,8 +1,8 @@
-package Exercises_01;
+package Exercises01;
 
 import java.util.Scanner;
 
-public class Exercises2020_01 {
+public class Exercises01 {
     public static void main(String[] args) {
         int guess = 51;
         int up = 100;
