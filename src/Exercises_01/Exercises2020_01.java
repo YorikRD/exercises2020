@@ -17,7 +17,7 @@ public class Exercises2020_01 {
 //        task5Lottery(7777);
 //        task5Lottery(3333);
 //        task5Lottery(4444);
-        task6RevGuess();
+//        task6RevGuess();
 
 
     }
