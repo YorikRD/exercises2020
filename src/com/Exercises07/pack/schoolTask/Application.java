@@ -1,7 +1,7 @@
-package com.Exercises07.pack.schollTask;
+package com.Exercises07.pack.schoolTask;
 
-import com.Exercises07.pack.schollTask.Humans.Administration.Administrative;
-import com.Exercises07.pack.schollTask.Humans.Administration.Director;
+import com.Exercises07.pack.schoolTask.Humans.Administration.Administrative;
+import com.Exercises07.pack.schoolTask.Humans.Administration.Director;
 
 public class Application {
     public static void main(String[] args) {

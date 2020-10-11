@@ -1,7 +1,7 @@
-package com.Exercises07.pack.schollTask.Humans.Academics;
+package com.Exercises07.pack.schoolTask.Humans.Academics;
 
-import com.Exercises07.pack.schollTask.Humans.Human;
-import com.Exercises07.pack.schollTask.VariablesAndRand;
+import com.Exercises07.pack.schoolTask.Humans.Human;
+import com.Exercises07.pack.schoolTask.VariablesAndRand;
 
 abstract public class Academics extends Human implements CanLearn {
 

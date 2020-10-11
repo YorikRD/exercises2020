@@ -1,6 +1,6 @@
-package com.Exercises07.pack.schollTask.Humans.Administration;
+package com.Exercises07.pack.schoolTask.Humans.Administration;
 
-import com.Exercises07.pack.schollTask.VariablesAndRand;
+import com.Exercises07.pack.schoolTask.VariablesAndRand;
 
 public interface Administrative {
     void startSchoolDay();

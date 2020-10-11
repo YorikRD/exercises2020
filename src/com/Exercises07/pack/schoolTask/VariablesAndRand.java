@@ -1,4 +1,4 @@
-package com.Exercises07.pack.schollTask;
+package com.Exercises07.pack.schoolTask;
 
 public class VariablesAndRand {
     private static final String[] names ={"Ana","Zara","Tom","John","Olga","Peter","Nikolay","Leo","Rebeca","Cao"};

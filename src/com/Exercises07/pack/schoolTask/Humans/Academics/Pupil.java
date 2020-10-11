@@ -1,4 +1,4 @@
-package com.Exercises07.pack.schollTask.Humans.Academics;
+package com.Exercises07.pack.schoolTask.Humans.Academics;
 
 public class Pupil extends Academics{
 

@@ -1,10 +1,10 @@
-package com.Exercises07.pack.schollTask;
+package com.Exercises07.pack.schoolTask;
 
-import com.Exercises07.pack.schollTask.Humans.Academics.Academics;
-import com.Exercises07.pack.schollTask.Humans.Academics.Pupil;
-import com.Exercises07.pack.schollTask.Humans.Academics.Teacher;
-import com.Exercises07.pack.schollTask.Humans.Administration.Administrative;
-import com.Exercises07.pack.schollTask.Humans.Administration.Director;
+import com.Exercises07.pack.schoolTask.Humans.Academics.Academics;
+import com.Exercises07.pack.schoolTask.Humans.Academics.Pupil;
+import com.Exercises07.pack.schoolTask.Humans.Academics.Teacher;
+import com.Exercises07.pack.schoolTask.Humans.Administration.Administrative;
+import com.Exercises07.pack.schoolTask.Humans.Administration.Director;
 
 import java.util.Arrays;
 

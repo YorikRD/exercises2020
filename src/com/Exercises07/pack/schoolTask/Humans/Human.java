@@ -1,4 +1,4 @@
-package com.Exercises07.pack.schollTask.Humans;
+package com.Exercises07.pack.schoolTask.Humans;
 
 abstract public class Human {
     protected String name;
