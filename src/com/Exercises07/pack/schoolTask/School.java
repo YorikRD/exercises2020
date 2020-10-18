@@ -77,10 +77,10 @@ public class School {
         for (Teacher teach:teachers) {
             teach.instruct(pupils[VariablesAndRand.rand(0,pupils.length)]);
         }
-        academicResulte();
+        academicResults();
         director.finishSchoolday();
     }
-    private void academicResulte(){
+    private void academicResults(){
         for (Pupil pupil:pupils) {
             if (pupil.getDiscLev()>pupil.getDisLevBase()) System.out.println("Pupil "+pupil.getName()+
                     " increased his Level in discipline "+pupil.getDiscipline()+
