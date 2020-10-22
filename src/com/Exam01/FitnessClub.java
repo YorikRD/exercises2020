@@ -20,7 +20,7 @@ public class FitnessClub {
         this.groupExercises = new Subscription[VariablesAndRand.maxInZone];
         this.opening = VariablesAndRand.open;
         this.closing = VariablesAndRand.closing;
-        this.virtualTime = LocalTime.of(12, 1);
+        this.virtualTime = LocalTime.of(12,0);
     }
 
     public LocalTime getVirtualTime() {
@@ -97,9 +97,9 @@ public class FitnessClub {
     }
 
     private boolean checkSubdate(Subscription subscription) {
-        if (LocalDate.now().isAfter(subscription.getEndDate()) || LocalDate.now().isBefore(subscription.getRegDate()))
-            return false;
-        return true;
+        return  !(LocalDate.now().isAfter(subscription.getEndDate()) || LocalDate.now().isBefore(subscription.getRegDate()));
+
+
     }
 
     private boolean checkTime(Subscription subscription) {
@@ -110,10 +110,8 @@ public class FitnessClub {
     }
 
     private boolean checkWorkingHours() {
-        if (virtualTime.isBefore(opening) || virtualTime.isAfter(closing)) {
-            return false;
-        }
-        return true;
+       return  !(virtualTime.isBefore(opening) || virtualTime.isAfter(closing));
+
     }
 
     private boolean subIsUsedNow(Subscription subscription) { //it is much more easy to create flag in Subscription, but in my opinion the check must be hear.

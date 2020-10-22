@@ -1,7 +1,6 @@
 package com.Exam01;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class PersonalData {
@@ -14,14 +13,13 @@ public class PersonalData {
         setName(name);
         setSurname(surname);
         setBurthdate(burthdate);
-        setAge();
+
     }
 
 
     public PersonalData() {
         setName(VariablesAndRand.randName());
         setSurname(VariablesAndRand.randSurname());
-        setAge();
         setBurthdate(LocalDate.now().minusYears(VariablesAndRand.rand(16,65)).minusMonths(VariablesAndRand.rand(0,12)).minusDays(VariablesAndRand.rand(0,31)));
     }
 
@@ -54,9 +52,6 @@ public class PersonalData {
         this.surname = surname;
     }
 
-    private void setAge() {
-        int age=(int) ChronoUnit.YEARS.between(this.burthdate,LocalDate.now());
-    }
 
 
     @Override
