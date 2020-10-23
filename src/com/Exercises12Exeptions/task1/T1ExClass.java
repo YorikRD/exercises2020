@@ -6,11 +6,14 @@ import java.nio.file.AccessDeniedException;
 import java.util.jar.JarException;
 
 public class T1ExClass {
-    enum Status{
-        FILE_NOT_FOUND,ACCESS_DENIED,JAR_ERROR
+    public enum Status {
+        FILE_NOT_FOUND, ACCESS_DENIED, JAR_ERROR;
+
+
     }
-   static   void exthrover (Status status) throws AccessDeniedException, FileNotFoundException, JarException {
-        switch (status){
+
+    static void exthrover(Status status) throws AccessDeniedException, FileNotFoundException, JarException {
+        switch (status) {
             case FILE_NOT_FOUND:
                 throw new FileNotFoundException("Called FileNotFoundException");
             case ACCESS_DENIED:
