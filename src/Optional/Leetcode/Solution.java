@@ -1,4 +1,5 @@
 package Optional.Leetcode;
+import com.Exam01.VariablesAndRand;
 
 import java.util.Arrays;
 
@@ -10,24 +11,18 @@ class Solutions {
         }
         Arrays.sort(wr);
         Arrays.sort(nums);
-//        for (int i = 0; i < wr.length; i++) {
-//            if (wr[i].info!=nums[i]) System.out.println(" Mismatch at index of "+i);
-//        }
         int a = Arrays.binarySearch(nums, target);
-//        System.out.println("a is "+a);
-//        System.out.println(a);
         int[] s = {0, 0};
         if (a < 0) {
             a = (-a < nums.length) ? -a : (-a - 1);
         } else if (a >= 0) {
-            if (nums[a] + nums[a + 1] == target) {
+            if (a+1<nums.length &&nums[a] + nums[a + 1] == target) {
                 s[0] = wr[a].index;
                 s[1] = wr[a + 1].index;
                 System.out.println("return from block 1");
                 return s;
-            }
-            else if(a ==-1){
-                a=nums.length/2;
+            } else if (a == -1) {
+                a = nums.length / 2;
             }
 
         }
@@ -35,17 +30,26 @@ class Solutions {
         int div = a / 2;
         System.out.println("div is " + div);
         int secondpoint;
+        int down = 0;
+        int up = nums.length;
         while (div >= 0 && div < nums.length) {
-            System.out.println("div is " + div);
+            System.out.println("div is " + div + " value= " + nums[div]);
             secondpoint = Arrays.binarySearch(nums, target - nums[div]);
-            if ((secondpoint < -nums.length) || secondpoint == div) div++;
-            if (secondpoint == -1) div--;
-            System.out.println("sec " + secondpoint);
+            System.out.println("sec " + secondpoint + " Surched for value of " + (target - nums[div]));
             if (secondpoint >= 0 && nums[secondpoint] + nums[div] == target && div != secondpoint) {
                 s[0] = wr[secondpoint].index;
                 s[1] = wr[div].index;
                 return s;
             }
+            if ((secondpoint <= -nums.length) || secondpoint == div||(-secondpoint>1)) {
+                System.out.println("div+ is trigered from value of "+div +" to "+(div+1 ));
+                div++;
+            }
+            if (secondpoint == -1 ) {
+                System.out.println("div- is trigered from value of "+div +" to "+(div-1) );
+                div--;
+            }
+
         }//                System.out.println("div is " +div +" number is " + nums[div]);
 
         System.out.println("Result no found");
@@ -86,12 +90,28 @@ class Solutions {
 
 public class Solution {
     public static void main(String[] args) {
-        int[] doll = {-10, 7, 19, 15};
-        int at = -9;
-        Solutions sol1 = new Solutions();
-        int[] pos = sol1.twoSum(doll, at);
-        System.out.println(Arrays.toString(pos));
-        System.out.println(Arrays.binarySearch(doll, at));
+        Solutions solutions2= new Solutions();
+        int[] arrr ={0,3,0};
+        int trgt =0;
+        System.out.println(Arrays.toString(solutions2.twoSum(arrr, trgt)));
+        masstest();
+
+
+
+    }
+
+    private static void masstest(){
+        Solutions solutions= new Solutions();
+        int[][] ms = new int[12000][];
+        for (int i = 0; i <22 ; i++) {
+            int length = (int)(Math.random()*6)+32;
+            ms[i]=new int[length];
+            for (int j = 0; j < length; j++) {
+                ms[i][j]=VariablesAndRand.rand(-150,257);
+            }
+            int trgt = ms[i][VariablesAndRand.rand(3,ms[i].length-1)]+ ms[i][2];
+            System.out.println(Arrays.toString(ms[i]) +" Target is "+trgt+" "+Arrays.toString(solutions.twoSum(ms[i],trgt)));
+        }
 
     }
 }
