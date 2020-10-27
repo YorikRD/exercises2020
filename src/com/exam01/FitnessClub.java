@@ -1,10 +1,10 @@
-package com.Exam01;
+package com.exam01;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
-import static com.Exam01.Subscription.Type.DAYTIME;
+import static com.exam01.Subscription.Type.DAYTIME;
 
 public class FitnessClub {
     private Subscription[] gym;

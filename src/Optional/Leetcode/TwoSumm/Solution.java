@@ -1,5 +1,5 @@
-package Optional.Leetcode;
-import com.Exam01.VariablesAndRand;
+package Optional.Leetcode.TwoSumm;
+import com.exam01.VariablesAndRand;
 
 import java.util.Arrays;
 

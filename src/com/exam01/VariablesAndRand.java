@@ -1,4 +1,4 @@
-package com.Exam01;
+package com.exam01;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

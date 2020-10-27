@@ -1,10 +1,8 @@
-package com.Exam01;
+package com.exam01;
 
-import java.sql.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {

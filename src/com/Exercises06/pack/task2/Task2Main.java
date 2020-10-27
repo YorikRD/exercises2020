@@ -1,7 +1,5 @@
 package com.Exercises06.pack.task2;
 
-import java.util.Arrays;
-
 public class Task2Main {
     public static void main(String[] args) {
         Food cheese = new Food("Rocfor",22,31,2,375); // Standart constructor
