@@ -8,12 +8,9 @@ class Solution {
         Long rev2 = 0l;
         int zn = (x > 0) ? 1 : -1;
         x = x * zn;
-        int razr = 0;
-        int doll = x;
-        while (doll >= 10) {
-            razr++;
-            doll /= 10;
-        }
+        int razr =(int)Math.log10((double)x);
+
+
         int[] arr = new int[razr + 1];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = x / ((int) Math.pow(10, razr - i));
