@@ -14,6 +14,7 @@ public class MapTask {
         firstTaskMap.put("rty", "Тверь");
         firstTaskMap.put("fgh", "Магадан");
         String city = "Тверь";
+        System.out.println("TODO:: написать статический метод, который приннимает на вход мапу (firstTaskMap) и город (city) "+city);
         System.out.println(loginsByCity(firstTaskMap, city));
 
 
@@ -33,8 +34,8 @@ public class MapTask {
         words.add("may");
         words.add("august");
         words.add("august");
-
-        System.out.println(wordListToMapWithQUant(words));
+        System.out.println("---CountWordsInList-----");
+        System.out.println(generalCounter(words));
 
 
         // TODO:: дана мапа (customerMap).
@@ -48,8 +49,8 @@ public class MapTask {
         customerMap.put("3", new Customer("Максим", "3", 48));
         customerMap.put("4", new Customer("Евгения", "4", 67));
 
-        getByAge(customerMap, 23, 48); //
-
+        System.out.println("---Trim with smth resolved at auditiry-----");
+        System.out.println(getByAge(customerMap, 18, 49));
 
         // TODO:: Задания по тексту (text). На каждый пункт - минимум один метод:
         //  1. написать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова в тексте
@@ -67,12 +68,16 @@ public class MapTask {
                 " sometimes on purpose injected humour and the like";
         //1.
         String word1 = "uncover";
+        System.out.println("Part 1 аписать метод, принимающий на вход слово и возвращающий частоту встречаемости данного слова в тексте:");
         System.out.println("For word '" + word1 + "' the nomber of instances is: " + worldCounterinString(word1, text));
         //2.
+        System.out.println("Part  2. написать метод, который собирает все слова в группы по количеству букв:");
         System.out.println(groupByLengths(text));
         //3.
+        System.out.println("Part  3. написать метод, который выводит в консоль топ 10 самых частых слов");
         printTenMostFrequent(text); // I have several problems with this method. in theory whear are more then one correct answer...case several words have the same nomber of instances.
         //4.
+        System.out.println("Part  4. Вывести частоту встречаемости букв анг алфавита в данном тексте. Вывести в процентах для каждой буквы");
         latinLetterCounter(text);
 
 
@@ -83,10 +88,9 @@ public class MapTask {
             int from, int to
     ) {
         HashMap<String, Customer> newMap = new HashMap<>();
-        for (Map.Entry<String, Customer> entry : map.entrySet()) {
-            if (entry.getValue().getAge() >= from &&
-                    entry.getValue().getAge() < to) {
-                newMap.put(entry.getKey(), entry.getValue());
+        for (Map.Entry<String, Customer> customerEntry : map.entrySet()) {
+            if (customerEntry.getValue().getAge()>=from&&customerEntry.getValue().getAge()<=to){
+             newMap.put(customerEntry.getKey(),customerEntry.getValue());
             }
         }
         return newMap;
@@ -113,7 +117,7 @@ public class MapTask {
 
     private static int worldCounterinString(String word, String text) {
         LinkedList<String> words = new LinkedList<>(Arrays.asList(text.toLowerCase().split(" ")));
-        HashMap<String, Integer> outMap = wordListToMapWithQUant(words);
+        HashMap<String, Integer> outMap = generalCounter(words);
         return outMap.get(word);
     }
 
@@ -170,14 +174,7 @@ public class MapTask {
         }
         int totalLetters=latinLetters.size();
         float fc =0;
-        HashMap<Character, Integer> letterCountMap =new HashMap<>();
-        for (Character latinLetter : latinLetters) {
-            if (letterCountMap.containsKey(latinLetter)){
-                letterCountMap.put(latinLetter,letterCountMap.get(latinLetter)+1);
-            } else {
-                letterCountMap.put(latinLetter,1);
-            }
-        }
+        HashMap<Character, Integer> letterCountMap =generalCounter(latinLetters);
         for (Map.Entry<Character, Integer> entry : letterCountMap.entrySet()) {
             float pct = (entry.getValue().floatValue()/totalLetters)*100;
             System.out.println("For the letter '"+entry.getKey()+"' the pct is:"+pct+"% with "+entry.getValue()+" instances");
@@ -186,4 +183,15 @@ public class MapTask {
         System.out.println("Check for losing " +fc +"% is present");
     }
 
+    private static <T> HashMap generalCounter(Collection<T> collection){
+        HashMap<T,Integer> outMap = new HashMap<>();
+        for (T t : collection) {
+            if (outMap.containsKey(t)){
+                outMap.put(t,outMap.get(t)+1);
+            }else {
+                outMap.put(t,1);
+            }
+        }
+        return outMap;
+    }
 }
