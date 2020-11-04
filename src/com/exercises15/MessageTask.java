@@ -1,5 +1,7 @@
 package com.exercises15;
 
+import com.exercises15.arrListAndLinkedList.Employee;
+
 import java.util.*;
 
 public class MessageTask {
@@ -62,15 +64,8 @@ public class MessageTask {
         //  в котором они встретились в первоначальном списке
         //  Например, было: [{URGENT, 4}, {HIGH, 9}, {LOW, 3}, {HIGH, 9}]
         //  на выходе: [{URGENT, 4}, {HIGH, 9}, {LOW, 3}]
-        LinkedHashSet<Message> linkedHashSet = new LinkedHashSet<>();
-        for (Message message : messageList) {
-            linkedHashSet.add(message);
-        }
-        LinkedList<Message> ms = new LinkedList<>();
-        for (Message message : linkedHashSet) {
-            ms.add(message);
-        }
-        messageList=ms;
+        LinkedHashSet<Message> linkedHashSet = new LinkedHashSet<>(messageList);
+        messageList = new LinkedList<>(linkedHashSet);
         return messageList;
     }
 

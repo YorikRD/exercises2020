@@ -1,10 +1,6 @@
 package com.exercises15.arrListAndLinkedList;
 
-import com.exercises15.Employee;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Aplication {
     enum Place{
@@ -43,6 +39,28 @@ public class Aplication {
         ap.diff( employeeLinkedList,single,quant,Place.END,Acton.ADD);
         ap.diff( employeeLinkedList,single,quant,Place.END,Acton.GET);
         ap.diff( employeeLinkedList,single,quant,Place.END,Acton.REMOVE);
+        System.out.println("---EmployeeSort---");
+        LinkedList<Employee> sortedList = new LinkedList<>(Employee.employeeGenerator(25));
+        Comparator<Employee> byName = new EmloyeeComparatorNm();
+        Comparator<Employee>  byNameAge =new EmloyeeComparatorNm().thenComparing(new EmloyeeComparatorAge());
+        Comparator<Employee> byNameAgeSalComp =new EmloyeeComparatorNm().thenComparing(new EmloyeeComparatorAge()).thenComparing(new EmloyeeComparatorSal()).thenComparing(new EmloyeeComparatorCmp());
+        sortedList.sort(byName);
+        System.out.println(" Only by name "+ sortedList);
+        sortedList.sort(byNameAge);
+        System.out.println(" Only by name & age "+ sortedList);
+        sortedList.sort(byNameAgeSalComp);
+        System.out.println(" by everything "+sortedList);
+
+        List<Employee> unsortedList2 = new LinkedList<>(Employee.employeeGenerator(25));
+        TreeSet<Employee> trByname = new TreeSet<>(new EmloyeeComparatorNm());
+        trByname.addAll(unsortedList2);
+        System.out.println(" Only by name "+ trByname);
+
+        TreeSet<Employee> trByNameAge = new TreeSet<>(new EmloyeeComparatorNm().thenComparing(new EmloyeeComparatorAge()));
+        trByNameAge.addAll(unsortedList2);
+        System.out.println(" Only by name & age "+ trByNameAge);
+
+        TreeSet<Employee> trEcr = new TreeSet<>(new EmloyeeComparatorNm().thenComparing(new EmloyeeComparatorAge()).thenComparing(new EmloyeeComparatorSal()).thenComparing(new EmloyeeComparatorCmp()));
 
 
 

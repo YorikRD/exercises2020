@@ -1,9 +1,6 @@
 package com.exercisses16;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MapTask {
     public static void main(String[] args) {
@@ -16,10 +13,8 @@ public class MapTask {
         firstTaskMap.put("zxc", "Москва");
         firstTaskMap.put("rty", "Тверь");
         firstTaskMap.put("fgh", "Магадан");
-
         String city = "Тверь";
-
-
+        System.out.println(loginsByCity(firstTaskMap, city));
 
 
         // TODO:: дан список слов (words).
@@ -39,7 +34,7 @@ public class MapTask {
         words.add("august");
         words.add("august");
 
-
+        System.out.println(wordListToMapWithQUant(words));
 
 
         // TODO:: дана мапа (customerMap).
@@ -53,6 +48,7 @@ public class MapTask {
         customerMap.put("3", new Customer("Максим", "3", 48));
         customerMap.put("4", new Customer("Евгения", "4", 67));
 
+        getByAge(customerMap, 23, 48); //
 
 
         // TODO:: Задания по тексту (text). На каждый пункт - минимум один метод:
@@ -69,21 +65,125 @@ public class MapTask {
                 "packages and web page editors now use Lorem Ipsum as their default model text and a search for lorem ipsum will " +
                 "uncover many web sites still uncover in their infancy Various versions uncover have evolved over the years uncover sometimes by accident" +
                 " sometimes on purpose injected humour and the like";
+        //1.
+        String word1 = "uncover";
+        System.out.println("For word '" + word1 + "' the nomber of instances is: " + worldCounterinString(word1, text));
+        //2.
+        System.out.println(groupByLengths(text));
+        //3.
+        printTenMostFrequent(text); // I have several problems with this method. in theory whear are more then one correct answer...case several words have the same nomber of instances.
+        //4.
+        latinLetterCounter(text);
+
 
     }
 
-    public static HashMap<String, Customer> getByAge(
+    private static HashMap<String, Customer> getByAge(
             HashMap<String, Customer> map,
             int from, int to
-            )
-    {
+    ) {
         HashMap<String, Customer> newMap = new HashMap<>();
-        for (Map.Entry<String, Customer> entry: map.entrySet()) {
+        for (Map.Entry<String, Customer> entry : map.entrySet()) {
             if (entry.getValue().getAge() >= from &&
-            entry.getValue().getAge() < to) {
+                    entry.getValue().getAge() < to) {
                 newMap.put(entry.getKey(), entry.getValue());
             }
         }
         return newMap;
     }
+
+    private static LinkedList<String> loginsByCity(HashMap<String, String> firstTaskMap, String city) {
+        LinkedList<String> usersFrom = new LinkedList<>();
+        for (Map.Entry<String, String> stringStringEntry : firstTaskMap.entrySet()) {
+            if (stringStringEntry.getValue().equalsIgnoreCase(city)) usersFrom.add(stringStringEntry.getKey());
+        }
+        return usersFrom;
+    }
+
+    private static HashMap<String, Integer> wordListToMapWithQUant(List<String> list) {
+        HashMap<String, Integer> outMap = new HashMap<>();
+        for (String s : list) {
+            if (outMap.containsKey(s)) {
+                outMap.put(s, outMap.get(s) + 1);
+            } else outMap.put(s, 1);
+
+        }
+        return outMap;
+    }
+
+    private static int worldCounterinString(String word, String text) {
+        LinkedList<String> words = new LinkedList<>(Arrays.asList(text.toLowerCase().split(" ")));
+        HashMap<String, Integer> outMap = wordListToMapWithQUant(words);
+        return outMap.get(word);
+    }
+
+    private static HashMap<Integer, HashSet<String>> groupByLengths(String text) {
+        HashSet<String> words = new HashSet<>(Arrays.asList(text.toLowerCase().split(" ")));
+        HashMap<Integer, HashSet<String>> out = new HashMap<>();
+        for (String word : words) {
+            Integer length = word.length();
+            if (out.containsKey(length)) {
+                out.get(length).add(word);
+            } else {
+                HashSet<String> setByLength = new HashSet<>();
+                setByLength.add(word);
+                out.put(length, setByLength);
+            }
+        }
+        return out;
+    }
+
+    private static void printTenMostFrequent(String text) {
+        LinkedList<String> words = new LinkedList<>(Arrays.asList(text.toLowerCase().split(" ")));
+        HashMap<String, Integer> outMap = wordListToMapWithQUant(words);
+        TreeMap<Integer, HashSet<String>> frqouter = new TreeMap<>();
+        for (Map.Entry<String, Integer> entry : outMap.entrySet()) {
+            Integer integer = entry.getValue();
+            if (frqouter.containsKey(integer)) {
+                frqouter.get(integer).add(entry.getKey());
+            } else {
+                HashSet<String> set = new HashSet<>();
+                set.add(entry.getKey());
+                frqouter.put(integer, set);
+            }
+        }
+        ArrayList<String> tenMost = new ArrayList<>();
+        while (tenMost.size() < 10) {
+            Object o = frqouter.lastKey();
+            tenMost.addAll(frqouter.get(o));
+            frqouter.remove(o);
+        }
+        for (int i = 0; i < 10; i++) {
+            System.out.println("At index of " + i + " is word of: '" + tenMost.get(i) + "' with " + outMap.get(tenMost.get(i)) + " instances");
+        }
+    }
+
+    private static void latinLetterCounter(String text) {
+        LinkedList<String> words = new LinkedList<>(Arrays.asList(text.toLowerCase().split("[^a-zA-Z]")));
+        LinkedList<Character> latinLetters = new LinkedList<>();
+        for (String word : words) {
+            char[] letters = word.toCharArray();
+            for (int i = 0; i < word.length(); i++) {
+                Character ch = letters[i];
+                latinLetters.add(ch);
+            }
+        }
+        int totalLetters=latinLetters.size();
+        float fc =0;
+        HashMap<Character, Integer> letterCountMap =new HashMap<>();
+        for (Character latinLetter : latinLetters) {
+            if (letterCountMap.containsKey(latinLetter)){
+                letterCountMap.put(latinLetter,letterCountMap.get(latinLetter)+1);
+            } else {
+                letterCountMap.put(latinLetter,1);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : letterCountMap.entrySet()) {
+            float pct = (entry.getValue().floatValue()/totalLetters)*100;
+            System.out.println("For the letter '"+entry.getKey()+"' the pct is:"+pct+"% with "+entry.getValue()+" instances");
+            fc+=pct;
+        }
+        System.out.println("Check for losing " +fc +"% is present");
+    }
+
 }

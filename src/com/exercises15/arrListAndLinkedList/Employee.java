@@ -1,4 +1,4 @@
-package com.exercises15;
+package com.exercises15.arrListAndLinkedList;
 
 import com.exam01.VariablesAndRand;
 
@@ -66,7 +66,18 @@ public class Employee {
         }
         return employees;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", company='" + company + '\'' +
+                ", salary=" + salary +
+                ", age=" + age +
+                '}'+"\n";
+    }
 }
+
 
 class EmloyeeComparatorNm implements Comparator<Employee>{
     @Override
