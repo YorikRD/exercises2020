@@ -1,36 +1,56 @@
 package com.exercisses17;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 
 public class ReflectionWorkingClass {
-    public static void showFiled(Object o) throws IllegalAccessException {
-        if (o.equals(null)) return;
-        if (o.getClass().isPrimitive()||o.getClass().equals(String.class)) System.out.println("This is instance of:  with a value of: "+o);
+    public static String showFiled(Object o) throws IllegalAccessException {
+        StringBuilder mainBuilder = new StringBuilder();
+        if (o == null) return " nullValue ";
+//        System.out.println("The object of " + o + " from class of " + o.getClass().getSimpleName() + " is Under analis");
+        if (o.getClass().equals(LocalDate.class) ||
+                o.getClass().equals(LocalDateTime.class) ||
+                o.getClass().equals(LocalTime.class) ||
+                o.getClass().isEnum() || o.getClass().equals(Integer.class))
+            //Integer is added simply because
+            // without it stack overflow occurs always
+            return mainBuilder.append(o).toString();
+        if (o.getClass().isPrimitive() || o.getClass().equals(String.class)) {
+//            System.out.println("Primitive or string append is triggered with " + o.getClass() + " " + o);
+            mainBuilder.append(o);
+            return mainBuilder.toString();
+        }
         Class objclass = o.getClass();
-        LinkedList<Field> fields = new LinkedList<>(Arrays.asList(objclass.getDeclaredFields()));
-        Class superclass =o.getClass().getSuperclass();
-        while (!superclass.equals(Object.class)){
+        if (objclass.isArray()) {
+            mainBuilder.append(" Includes an array of: '\n'");
+            for (int i = 0; i < Array.getLength(o); i++) {
+                if (!showFiled(Array.get(o, i)).equals(null)) {
+                    mainBuilder.append("At index of " + i + " ").append(showFiled(Array.get(o, i))).append("\n");
+                }
+            }
+        }
+//        TODO check for collection!
+        ArrayList<Field> fields = new ArrayList<>(Arrays.asList(objclass.getDeclaredFields()));
+//        System.out.println(fields);
+        Class superclass = o.getClass().getSuperclass();
+        while (!superclass.equals(Object.class)) {
             fields.addAll(Arrays.asList(superclass.getDeclaredFields()));
             superclass = superclass.getSuperclass();
         }
+//        System.out.println("Field collection was created" + fields);
         for (Field field : fields) {
             field.setAccessible(true);
-           if (field.getType().isPrimitive()||field.getType().equals(String.class))
-               { if (field.getModifiers()!=25) // added to cut of public static final fields used in abstract classes
-                   System.out.println("The field of:" + field.getName() + "with value of: " + field.get(o));}
-           else {
-               showFiled(field.get(o));
-           }
+            mainBuilder.append("\n" + "The field of:" + field.getName() + "with value of: " + showFiled(field.get(o)));
+
         }
 
-
-
+        return mainBuilder.toString();
 
 
     }
-
 }

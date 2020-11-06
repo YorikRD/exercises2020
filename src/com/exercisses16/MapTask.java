@@ -138,28 +138,16 @@ public class MapTask {
     }
 
     private static void printTenMostFrequent(String text) {
-        LinkedList<String> words = new LinkedList<>(Arrays.asList(text.toLowerCase().split(" ")));
-        HashMap<String, Integer> outMap = wordListToMapWithQUant(words);
-        TreeMap<Integer, HashSet<String>> frqouter = new TreeMap<>();
-        for (Map.Entry<String, Integer> entry : outMap.entrySet()) {
-            Integer integer = entry.getValue();
-            if (frqouter.containsKey(integer)) {
-                frqouter.get(integer).add(entry.getKey());
-            } else {
-                HashSet<String> set = new HashSet<>();
-                set.add(entry.getKey());
-                frqouter.put(integer, set);
-            }
+        HashMap<String, Integer> outMap = wordListToMapWithQUant(Arrays.asList(text.strip().toLowerCase().split(" ")));
+        TreeSet<Map.Entry<String, Integer>> finset = new TreeSet<>(new Localcomparator());
+        finset.addAll(outMap.entrySet());
+        int trimer=1;
+        for (Map.Entry<String, Integer> entry : finset) {
+            System.out.println(" The world at pos:"+trimer+" word is: "+entry.getKey()+" with "+entry.getValue()+" instances");
+            trimer++;
+            if (trimer == 11) return;
         }
-        ArrayList<String> tenMost = new ArrayList<>();
-        while (tenMost.size() < 10) {
-            Object o = frqouter.lastKey();
-            tenMost.addAll(frqouter.get(o));
-            frqouter.remove(o);
-        }
-        for (int i = 0; i < 10; i++) {
-            System.out.println("At index of " + i + " is word of: '" + tenMost.get(i) + "' with " + outMap.get(tenMost.get(i)) + " instances");
-        }
+        
     }
 
     private static void latinLetterCounter(String text) {
@@ -193,5 +181,14 @@ public class MapTask {
             }
         }
         return outMap;
+    }
+}
+
+class Localcomparator implements Comparator<Map.Entry<String, Integer>>{
+
+    @Override
+    public int compare(Map.Entry<String, Integer> ientry1, Map.Entry<String, Integer> entry2) {
+        if (ientry1.getValue().equals(entry2.getValue())) return -1;
+        return Integer.compare(entry2.getValue(),ientry1.getValue());
     }
 }
