@@ -45,6 +45,7 @@ public class ReflectionWorkingClass {
 //        System.out.println("Field collection was created" + fields);
         for (Field field : fields) {
             field.setAccessible(true);
+            if (!java.lang.reflect.Modifier.isStatic(field.getModifiers()))
             mainBuilder.append("\n" + "The field of:" + field.getName() + "with value of: " + showFiled(field.get(o)));
 
         }
