@@ -2,72 +2,63 @@ package com.exercises19;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Aplication {
     public static void main(String[] args) {
         File file = new File("resources/fileWithData.txt");
-        String ahahaha= "This fucking! method works";
+        String baseString= "Lo in the orient when the gracious light\n" +
+                "Lifts up his burning head, each under eye\n" +
+                "Doth homage to his new-appearing sight,\n" +
+                "Serving with looks his sacred majesty,\n" +
+                "And having climbed the steep-up heavenly hill,\n" +
+                "Resembling strong youth in his middle age,\n" +
+                "Yet mortal looks adore his beauty still,\n" +
+                "Attending on his golden pilgrimage:\n" +
+                "But when from highmost pitch with weary car,\n" +
+                "Like feeble age he reeleth from the day,\n" +
+                "The eyes (fore duteous) now converted are\n" +
+                "From his low tract and look another way:\n" +
+                "So thou, thy self out-going in thy noon:\n" +
+                "Unlooked on diest unless thou get a son.";
         String key = "12345";
-        try(OutPutDecorator dec1 = new OutPutDecorator(new FileOutputStream(file,false),XorCoder.class,key)) {
-            dec1.write(ahahaha.getBytes());
+        writeToTextWithEncription(file,false,baseString,XorCoder.class,key);
+        System.out.println(readFromFileWithEncr(file,XorCoder.class,key));
+
+
+
+
+
+    }
+    private static void writeToTextWithEncription(File file, boolean append ,String baseString, Class codeClass, String key){
+        try(OutPutDecorator dec1 = new OutPutDecorator(new FileOutputStream(file,append),codeClass,key)) {
+            dec1.write(baseString.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private static <byteArray> String readFromFileWithEncr(File file, Class codeClass, String key){
         String res = null;
-
         try(InputDecoratorXor inputDecoratorXor = new InputDecoratorXor(new FileInputStream(file),XorCoder.class,key);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream()
         ) {
-            byte[] bytes = new byte[ahahaha.length()];
-            inputDecoratorXor.read(bytes);
-            res = new String(bytes);
+            byte[] bytes = new byte[3000]; //weal point require adding autoexpander for array;
+            int data;
+            while ((data=inputDecoratorXor.read(bytes))!=-1){
+             byteArray.write(bytes,0,data);
+            }
+
+            res = new String(byteArray.toByteArray());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println(res+" Input");
-
-//
-
-    }
-    private static String readFromFile(File file, String code) throws IOException {
-        String res = null;
-        try (InputDecoratorXor inputDecoratorXor = new InputDecoratorXor(new FileInputStream(file),XorCoder.class,code);
-//        BufferedInputStream buffer = new BufferedInputStream(inputStream);
-             ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        ) {
-            byte[] bytes = new byte[300];
-            int data;
-            //read returns nomber of readen bytes, or -1 if there is nothing to read
-            while ((data = inputDecoratorXor.read(bytes)) != -1) {
-                byteArray.write(bytes, 0, data);
-            }
-            res = new String(byteArray.toByteArray());
-        }
         return res;
+    }
 
-    }
-    private static String readFromFile2(File file) throws IOException{
-        String res =  null;
-        try(FileInputStream inputStream=new FileInputStream(file);
-//        BufferedInputStream buffer = new BufferedInputStream(inputStream);
-            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-        ) {
-            byte[] bytes  = new byte[300];
-            int data;
-            //read returns nomber of readen bytes, or -1 if there is nothing to read
-            while ((data = inputStream.read(bytes))!=-1){
-                byteArray.write(bytes,0,data);
-            }
-            res = new String(XorCoder.decode(byteArray.toByteArray(),"12345"));
-        }
-        return res;
-        // the method read from inputsteram reads data to some structure i.e byte[}
-    }
 
 }

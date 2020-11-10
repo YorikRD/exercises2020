@@ -2,10 +2,10 @@ package com.exercises19;
 
 /**
  * @author Алексей
- * @version 1
+ * @version 2
  * Public class contains static methods for xor decoding
  */
-@Encription(encriptionType = "xor",version = 1)
+@Encription(encriptionType = "xor",version = 2)
 public class XorCoder {
 
     /**
@@ -41,7 +41,7 @@ public class XorCoder {
     }
 
     /**
-     * Decode method private%static
+     * Decode method public&static
      * @param coded - byte[] which is supposed to be decoded
      * @param keystr - String containing xor key
      * @return - byte[] resulted
@@ -50,9 +50,22 @@ public class XorCoder {
         byte[] key = keystr.getBytes();
         byte[] res = new byte[coded.length];
         for (int i = 0; i < res.length; i++) {
-            res[i] = (byte) (coded[i] ^ key[i % key.length]);
+            res[i] = (byte) (coded[i] ^ key[(i) % key.length]);
         }
         return res;
+    }
+
+    /**
+     * Decode method public&static returns void (changes the coded array)
+     * @param coded - byte[] with coded Data, will be changed in process
+     * @param keystr -  String containing xor key
+     */
+    @VoidDecoderEncoder()
+    public static void decodeEncodeVoid(byte[] coded, String keystr){
+        byte[] key = keystr.getBytes();
+        for (int i = 0; i < coded.length; i++) {
+            coded[i] = (byte)(coded[i]^key[i % key.length]);
+        }
     }
 }
 
