@@ -25,6 +25,8 @@ public class Aplication {
         String key = "12345";
         writeToTextWithEncription(file,false,baseString,XorCoder.class,key);
         System.out.println(readFromFileWithEncr(file,XorCoder.class,key));
+        System.out.println("The string is identical to base: "+ baseString.equals(readFromFileWithEncr(file,XorCoder.class,key)));
+
 
 
 
