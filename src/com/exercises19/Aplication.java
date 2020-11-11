@@ -42,12 +42,12 @@ public class Aplication {
             e.printStackTrace();
         }
     }
-    private static <byteArray> String readFromFileWithEncr(File file, Class codeClass, String key){
+    private static  String readFromFileWithEncr(File file, Class codeClass, String key){
         String res = null;
         try(InputDecoratorXor inputDecoratorXor = new InputDecoratorXor(new FileInputStream(file),XorCoder.class,key);
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream()
         ) {
-            byte[] bytes = new byte[3000]; //weal point require adding autoexpander for array;
+            byte[] bytes = new byte[inputDecoratorXor.available()];
             int data;
             while ((data=inputDecoratorXor.read(bytes))!=-1){
              byteArray.write(bytes,0,data);
@@ -61,6 +61,5 @@ public class Aplication {
         }
         return res;
     }
-
 
 }

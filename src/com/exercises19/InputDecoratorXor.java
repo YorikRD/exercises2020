@@ -31,7 +31,7 @@ public class InputDecoratorXor extends FilterInputStream {
 
     /**     *
      * @param b byte[] marked for reading data from file.
-     * @return return number of already ridden bytes, or -1 if the data in file is ridden entirely
+     * @return next byte of data, or -1 if the end of the stream is reached.
      * @throws IOException,
      */
     @Override
