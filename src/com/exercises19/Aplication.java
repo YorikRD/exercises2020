@@ -47,7 +47,7 @@ public class Aplication {
         try(InputDecoratorXor inputDecoratorXor = new InputDecoratorXor(new FileInputStream(file),XorCoder.class,key);
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream()
         ) {
-            byte[] bytes = new byte[inputDecoratorXor.available()];
+            byte[] bytes = new byte[100];
             int data;
             while ((data=inputDecoratorXor.read(bytes))!=-1){
              byteArray.write(bytes,0,data);
