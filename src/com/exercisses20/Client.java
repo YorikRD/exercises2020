@@ -14,9 +14,11 @@ public class Client {
         this.port = port;
         scanner = new Scanner(System.in);
     }
-    public Client(String propFilepath) {
-        this.ip = PropReader.readFrProp(propFilepath,"server.ip");
-        this.port =Integer.parseInt(PropReader.readFrProp(propFilepath,"port")) ;
+
+
+    public Client(String propFilePath) {
+        this.ip = PropReader.readBySingle(propFilePath,"server.ip");
+        this.port = PropReader.intreadfropmProp("config.properties","port");
         scanner = new Scanner(System.in);
     }
 
@@ -43,11 +45,7 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        try {
-            new Client("192.168.88.242", 8090).start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
 
