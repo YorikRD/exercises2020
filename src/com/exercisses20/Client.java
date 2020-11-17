@@ -17,8 +17,9 @@ public class Client {
 
 
     public Client(String propFilePath) {
-        this.ip = PropReader.readBySingle(propFilePath,"server.ip");
-        this.port = PropReader.intreadfropmProp("config.properties","port");
+        PropReader inst = PropReader.getInstance();
+        this.ip = inst.readFrProp("config.properties","server.ip");
+        this.port = inst.intreadfropmProp("config.properties","port");
         scanner = new Scanner(System.in);
     }
 
@@ -31,7 +32,7 @@ public class Client {
         while (true){
             System.out.println(" input message");
             message = scanner.nextLine();
-            sendAndPrintMessage(SimpleMessage.getMessage(name, message));
+            sendAndPrintMessage(SimpleMessage.getMessage(name, message)); //TODO replace with varuable method which returns or runs send
         }
     }
 
@@ -40,7 +41,7 @@ public class Client {
            connection.sendMessage(message);
 
            SimpleMessage fromServer= connection.readMessage();
-            System.out.println("From Server: "+fromServer);
+            System.out.println("From Server: "+fromServer); // TODO replace with variable reader.
         }
     }
 

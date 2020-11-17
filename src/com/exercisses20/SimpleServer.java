@@ -10,14 +10,15 @@ public class SimpleServer {
     private static final long serialVersionUID = 1L;
 
     public void start() throws IOException, ClassNotFoundException {
-        try(ServerSocket serverSocket = new ServerSocket(PropReader.intreadfropmProp("config.properties","server.port"))) { // waiting for clients
+        PropReader inst = PropReader.getInstance();
+        try(ServerSocket serverSocket = new ServerSocket(inst.intreadfropmProp("config.properties","server.port"))) { // waiting for clients
             System.out.println("Server Strated");
             while (true){
                 Socket socket = serverSocket.accept(); // making actual connection
-                clientcount++;
+                if(socket != null) clientcount++; // TODO Check for normal run
                 connection = new Connection(socket);
                 System.out.println(connection.readMessage());
-                connection.sendMessage(SimpleMessage.getMessage("server","recieved"));
+                connection.sendMessage(SimpleMessage.getMessage("server","recieved")); // TODO replace with method generating smth from previous message
             }
         }
     }

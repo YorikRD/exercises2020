@@ -9,20 +9,21 @@ public class PropReader {
     private static PropReader instance = null;
 
     private PropReader() {
-        instance= this;
+
     }
 
 
-    public static String readBySingle (String path, String key){
+    public static PropReader  getInstance (){
         PropReader propReader = null;
         if (instance == null) {
             propReader = new PropReader();
+            instance = propReader;
         } else propReader = instance;
-        return propReader.readFrProp(path, key);
+        return propReader;
     }
 
 
-    private   String readFrProp(String path, String key){
+    public  String readFrProp(String path, String key){
         String readed = null;
         Properties configPr = new Properties();
         try(InputStream inputStream = PropReader.class.getClassLoader().getResourceAsStream(path) ) {
@@ -34,8 +35,8 @@ public class PropReader {
         return  readed;
     }
 
-    public static int intreadfropmProp(String path, String key){
+    public  int intreadfropmProp(String path, String key){
 
-        return Integer.parseInt(readBySingle(path, key));
+        return Integer.parseInt(readFrProp(path, key));
     }
 }
