@@ -14,10 +14,10 @@ import java.lang.reflect.Method;
  * @Field code - String used as a key.
  */
 public class InputDecoratorXor extends FilterInputStream {
-    Class codeClass;
+    Class<XorCoder> codeClass;
     String code;
 
-    public InputDecoratorXor(InputStream in, Class codeClass, String code) {
+    public InputDecoratorXor(InputStream in, Class<XorCoder> codeClass, String code) {
         super(in);
         if (!codeClass.isAnnotationPresent(Encription.class))throw new IllegalArgumentException("codeClass must be annotated with @Encription class");
         this.codeClass = codeClass;

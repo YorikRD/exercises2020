@@ -1,9 +1,6 @@
 package com.exercises19;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Aplication {
     public static void main(String[] args) {
@@ -33,7 +30,7 @@ public class Aplication {
 
 
     }
-    private static void writeToTextWithEncription(File file, boolean append ,String baseString, Class codeClass, String key){
+    private static void writeToTextWithEncription(File file, boolean append , String baseString, Class<XorCoder> codeClass, String key){
         try(OutPutDecorator dec1 = new OutPutDecorator(new FileOutputStream(file,append),codeClass,key)) {
             dec1.write(baseString.getBytes());
         } catch (FileNotFoundException e) {
@@ -42,7 +39,7 @@ public class Aplication {
             e.printStackTrace();
         }
     }
-    private static  String readFromFileWithEncr(File file, Class codeClass, String key){
+    private static  String readFromFileWithEncr(File file, Class<XorCoder> codeClass, String key){
         String res = null;
         try(InputDecoratorXor inputDecoratorXor = new InputDecoratorXor(new FileInputStream(file),XorCoder.class,key);
             ByteArrayOutputStream byteArray = new ByteArrayOutputStream()

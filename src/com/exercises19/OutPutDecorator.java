@@ -1,10 +1,8 @@
 package com.exercises19;
 
-import java.io.FileOutputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -16,11 +14,11 @@ import java.lang.reflect.Method;
  * @Field code - String used as a key.
  */
 public class OutPutDecorator extends FilterOutputStream {
-    Class codeClass;
+    Class<XorCoder> codeClass;
     String code;
 
 
-    public OutPutDecorator(OutputStream out, Class codeClass, String code) {
+    public OutPutDecorator(OutputStream out, Class<XorCoder> codeClass, String code) {
         super(out);
         if (!codeClass.isAnnotationPresent(Encription.class))throw new IllegalArgumentException("codeClass must be annotated with @Encription class");
         this.codeClass = codeClass;
