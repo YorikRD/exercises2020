@@ -19,7 +19,7 @@ public class Client {
     public Client(String propFilePath) {
         PropReader inst = PropReader.getInstance();
         this.ip = inst.readFrProp("config.properties","server.ip");
-        this.port = inst.intreadfropmProp("config.properties","port");
+        this.port = inst.intreadfropmProp("config.properties","server.port");
         scanner = new Scanner(System.in);
     }
 
