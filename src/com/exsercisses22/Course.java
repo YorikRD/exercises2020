@@ -1,4 +1,4 @@
-package com.exsercisses21;
+package com.exsercisses22;
 
 public class Course {
     private int price;

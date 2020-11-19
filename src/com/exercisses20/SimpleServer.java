@@ -7,7 +7,7 @@ import java.net.Socket;
 public class SimpleServer {
     private Connection connection;
     private int clientcount=0;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     public void start() throws IOException, ClassNotFoundException {
         PropReader inst = PropReader.getInstance();

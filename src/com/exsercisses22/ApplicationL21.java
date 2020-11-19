@@ -1,4 +1,4 @@
-package com.exsercisses21;
+package com.exsercisses22;
 
 
 import com.Exercises07.pack.schoolTask.Humans.Academics.Academics;

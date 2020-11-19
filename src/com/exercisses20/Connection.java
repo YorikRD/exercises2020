@@ -12,7 +12,7 @@ public class Connection implements AutoCloseable {
     private Socket socket;
     private ObjectInputStream input;
     private ObjectOutputStream output;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     public Connection(Socket socket) throws IOException {
         this.socket = socket; // sockeet obj common for client & server

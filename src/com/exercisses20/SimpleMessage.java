@@ -7,7 +7,7 @@ public class SimpleMessage implements Serializable {
     private String sender;
     private String text;
     private LocalDateTime dateTime;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     public SimpleMessage(String sender, String text) {
         this.sender = sender;
