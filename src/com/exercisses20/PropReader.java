@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class PropReader {
     private static PropReader instance = null;
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private PropReader() {
     }
