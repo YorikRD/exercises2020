@@ -1,4 +1,4 @@
-package com.exercisses20;
+package com.exercisses17.AnnotationTask.dIcontainer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,18 +11,8 @@ public class PropReader {
     private PropReader() {
     }
 
-    public Properties fullRead(String path){
-        Properties configPr = new Properties();
-        try(InputStream inputStream = PropReader.class.getClassLoader().getResourceAsStream(path) ) {
-            configPr.load(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return configPr;
-    }
 
-
-    public static PropReader  getInstance (){
+    public static PropReader getInstance (){
         PropReader propReader = null;
         if (instance == null) {
             propReader = new PropReader();

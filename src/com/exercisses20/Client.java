@@ -32,7 +32,7 @@ public class Client {
         while (true){
             System.out.println(" input message");
             message = scanner.nextLine();
-            sendAndPrintMessage(SimpleMessage.getMessage(name, message)); //TODO replace with varuable method which returns or runs send
+            if (!messageAnnaliser(message)) sendAndPrintMessage(SimpleMessage.getMessage(name, message));
         }
     }
 
@@ -45,9 +45,14 @@ public class Client {
         }
     }
 
-    public static void main(String[] args) {
+    private boolean messageAnnaliser(String string){
+        string.strip().toLowerCase();
 
+
+        return false;
     }
+
+
 
 
 

@@ -111,11 +111,11 @@ public class ApplicationL21 {
         for (int i = 0; i < 22 ; i++) {
             uni1.addCourse(Course.getInstance());
         }
-//        System.out.println(uni1.getFilteredCourses(timeThreeMounths));
-//        System.out.println(uni1.getFilteredCourses(priceLess20000));
-//        System.out.println(uni1.getFilteredCourses(titleIsJJD));
-//        System.out.println(uni1.getFilteredCourses(timeThreeMounths.and(priceLess20000)));
-//        System.out.println(uni1.getFilteredCourses(timeThreeMounths.and(priceLess20000).and(titleIsJJD)));
+        System.out.println(uni1.getFilteredCourses(timeThreeMounths));
+        System.out.println(uni1.getFilteredCourses(priceLess20000));
+        System.out.println(uni1.getFilteredCourses(titleIsJJD));
+        System.out.println(uni1.getFilteredCourses(timeThreeMounths.and(priceLess20000)));
+        System.out.println(uni1.getFilteredCourses(timeThreeMounths.and(priceLess20000).or(titleIsJJD)));
 
         System.out.println(uni1.getCourses());
        List<Course> all =  uni1.getCourses();
@@ -123,6 +123,9 @@ public class ApplicationL21 {
             priceUpper10_000.accept(course);
         }
         System.out.println(uni1.getCourses());
+
+        //
+
 
     }
 }
