@@ -1,4 +1,4 @@
-package com.exsercisses22;
+package com.exercisses22;
 
 import java.util.ArrayList;
 import java.util.List;

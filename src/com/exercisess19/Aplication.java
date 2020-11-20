@@ -1,4 +1,4 @@
-package com.exercises19;
+package com.exercisess19;
 
 import java.io.*;
 
@@ -25,8 +25,16 @@ public class Aplication {
         System.out.println("The string is identical to base: "+ baseString.equals(readFromFileWithEncr(file,XorCoder.class,key)));
 
 
-
-
+//        File file2 = new File("resources/poetry.txt");
+//
+//        try(FileOutputStream out = new FileOutputStream(file2)) {
+//            byte[] bites = baseString.getBytes();
+//            out.write(bites);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
     }

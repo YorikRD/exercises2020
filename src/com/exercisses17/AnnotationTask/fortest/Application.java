@@ -1,14 +1,9 @@
 package com.exercisses17.AnnotationTask.fortest;
 
-import com.exercises19.Aplication;
-import com.exercisses17.AnnotationTask.dIcontainer.marks.ConfigClass;
 import com.exercisses17.AnnotationTask.fortest.config.CatConfig;
 import com.exercisses17.AnnotationTask.fortest.config.MouseConfig;
 import com.exercisses17.AnnotationTask.fortest.config.OwnerConfig;
 
-import java.io.*;
-import java.lang.annotation.Annotation;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;

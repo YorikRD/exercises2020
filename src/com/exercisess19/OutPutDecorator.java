@@ -1,4 +1,4 @@
-package com.exercises19;
+package com.exercisess19;
 
 import java.io.FilterOutputStream;
 import java.io.IOException;
