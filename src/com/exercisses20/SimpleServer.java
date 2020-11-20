@@ -1,42 +1,49 @@
 package com.exercisses20;
 
+import com.exercisses20.auxiliary.LocalhostOrLan;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashSet;
 
 public class SimpleServer {
     private Connection connection;
-    private int clientcount=0;
     private static final long serialVersionUID = 2L;
+    private HashSet<String> clients = new HashSet<>();
 
-    public void start() throws IOException, ClassNotFoundException {
+
+    public void start(LocalhostOrLan choice) throws IOException, ClassNotFoundException {
         PropReader inst = PropReader.getInstance();
-        try(ServerSocket serverSocket = new ServerSocket(inst.intreadfropmProp("config.properties","server.port"))) { // waiting for clients
-            System.out.println("Server Strated");
+        try(ServerSocket serverSocket = new ServerSocket(inst.intreadfropmProp(choice.getPath(),choice.getPort()))) { // waiting for clients
+            System.out.println("Server Strated variant: "+choice);
             while (true){
                 Socket socket = serverSocket.accept(); // making actual connection
-                if(socket != null) clientcount++; // TODO Check for normal run
                 connection = new Connection(socket);
-                System.out.println(connection.readMessage());
+                SimpleMessage newM = connection.readMessage();
+                clients.add(newM.getSender());
+                System.out.println(newM);
+
                 connection.sendMessage(SimpleMessage.getMessage("server","recieved")); // TODO replace with method generating smth from previous message
             }
         }
     }
 
-    public int getClientcount() {
-        return clientcount;
-    }
+
+
 
     public static void main(String[] args) {
         SimpleServer server = new SimpleServer();
         try {
-            server.start();
+            server.start(LocalhostOrLan.LOCALHOST);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+
+
 
     private String cmdAnswer (SimpleMessage message){
         String answer = null;

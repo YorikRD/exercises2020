@@ -1,26 +1,37 @@
 package com.exercisses20;
 
+import com.exercisses20.auxiliary.Comands;
+import com.exercisses20.auxiliary.LocalhostOrLan;
+
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Client {
     private String ip;
     private int port;
     private Scanner scanner;
     private static final long serialVersionUID = 1L;
+    Comands comands;
 
     public Client(String ip, int port) {
         this.ip = ip;
         this.port = port;
         scanner = new Scanner(System.in);
+        this.comands = new Comands("config.properties");
     }
 
 
-    public Client(String propFilePath) {
+    public Client(LocalhostOrLan choice) {
         PropReader inst = PropReader.getInstance();
-        this.ip = inst.readFrProp("config.properties","server.ip");
-        this.port = inst.intreadfropmProp("config.properties","server.port");
+        String readed =inst.readFrProp(choice.getPath(),choice.getIp());
+        System.out.println(readed +" ip");
+        this.ip = readed;
+        int pr =inst.intreadfropmProp(choice.getPath(),choice.getPort());
+        System.out.println(pr+" pr");
+        this.port = pr;
         scanner = new Scanner(System.in);
+        this.comands = new Comands(choice.getPath());
     }
 
 
@@ -46,9 +57,9 @@ public class Client {
     }
 
     private boolean messageAnnaliser(String string){
-        string.strip().toLowerCase();
-
-
+         if (comands.getAllcomands().containsKey(string)){
+             System.out.println(comands.getAllcomands().get(string));
+         }
         return false;
     }
 
