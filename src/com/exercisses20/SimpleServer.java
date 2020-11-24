@@ -23,8 +23,7 @@ public class SimpleServer {
                 SimpleMessage newM = connection.readMessage();
                 clients.add(newM.getSender());
                 System.out.println(newM);
-
-                connection.sendMessage(SimpleMessage.getMessage("server","recieved")); // TODO replace with method generating smth from previous message
+                connection.sendMessage(messageReturner(newM)); // TODO replace with method generating smth from previous message
             }
         }
     }
@@ -45,9 +44,19 @@ public class SimpleServer {
 
 
 
-    private String cmdAnswer (SimpleMessage message){
-        String answer = null;
-        answer = message.getText();
+    private SimpleMessage messageReturner (SimpleMessage message){
+        String string = null;
+        switch (message.getText())     {
+            case "/count":
+                string = "Current number of unique Logins is: "+clients.size();
+                break;
+            case "/ping":
+                string = "Time of initial message departure: "+message.getDateTime();
+                break;
+            default:
+                string = "recieved";
+        }
+        SimpleMessage answer = SimpleMessage.getMessage("server",string);
 
         return answer;
     }

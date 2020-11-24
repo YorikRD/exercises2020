@@ -24,14 +24,15 @@ public class TopTenWords {
         Map<String, Long> map = new HashMap<>();
         try {
              map = Files.lines(Paths.get("poetry.txt"))
+                     .parallel() //emakes existing stream parallel
+                     .peek(s -> s.toLowerCase())
                     .flatMap(str -> Arrays.stream(str.split("[^a-zA-Z]")))
-                     .filter((s -> !s.equals("")))
-                    .peek(s -> s.toLowerCase())
+                    .filter((s -> !s.equals("")))
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                     .entrySet()
-                    .stream()
+                    .parallelStream() //creates parllel streams for next operations O=N  O=logN*#Thread in some version by default 4
                     .sorted((e1, e2) ->e2.getValue().compareTo(e1.getValue()) )
-                    .limit(10)
+                    .limit(10) //join all subthreads
                     .collect(Collectors.toMap(s -> s.getKey(),n ->n.getValue()));
 
 

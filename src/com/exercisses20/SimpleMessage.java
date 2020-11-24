@@ -34,6 +34,9 @@ public class SimpleMessage implements Serializable {
         dateTime = LocalDateTime.now();
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
     @Override
     public String toString() {

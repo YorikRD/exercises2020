@@ -61,8 +61,8 @@ public class PupilTask {
 //        System.out.println("nowSameNames " +nowSameNames);
 
         // 7. Отсортировать по полу, потом по дате рождения, потом по имени (в обратном порядке), собрать в список (List)
-        ArrayList<Pupil> sortedList = baseList.stream()
-                .sorted(Comparator.comparingInt(p -> p.getGender().ordinal()).thenComparing())
+//        ArrayList<Pupil> sortedList = baseList.stream()
+//                .sorted(Comparator.<Pupil>comparingInt(p -> p.getGender().ordinal()).thenComparing())
 
         // 8. Вывести в консоль всех учеников в возрасте от N до M лет
 

@@ -14,8 +14,8 @@ import java.lang.reflect.Method;
  * @Field code - String used as a key.
  */
 public class InputDecoratorXor extends FilterInputStream {
-    Class<XorCoder> codeClass;
-    String code;
+    private Class<XorCoder> codeClass;
+    private String code;
 
     public InputDecoratorXor(InputStream in, Class<XorCoder> codeClass, String code) {
         super(in);

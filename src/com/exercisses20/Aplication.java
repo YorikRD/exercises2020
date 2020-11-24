@@ -2,8 +2,6 @@ package com.exercisses20;
 
 import com.exercisses20.auxiliary.LocalhostOrLan;
 
-import java.io.File;
-
 public class Aplication {
     public static void main(String[] args) {
 
@@ -12,14 +10,5 @@ public class Aplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
     }
 }
