@@ -3,6 +3,9 @@ package com.exercisses20;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * No changes to original code
+ */
 public class SimpleMessage implements Serializable {
     private String sender;
     private String text;

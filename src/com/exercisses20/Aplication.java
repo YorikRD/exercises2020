@@ -7,6 +7,7 @@ public class Aplication {
 
         try {
             new Client(LocalhostOrLan.LOCALHOST).start();
+//            new Client("127.0.0.1",8090).start();
         } catch (Exception e) {
             e.printStackTrace();
         }

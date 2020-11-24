@@ -1,5 +1,10 @@
 package com.exercisses20.auxiliary;
 
+
+/**
+ * Enum with primitive data allowing to create Client and Simpleserver instances in a simple wat
+ */
+
 public enum LocalhostOrLan {
     LAN("server.port","server.ip"), LOCALHOST("local.port","local.server.ip")
     ;

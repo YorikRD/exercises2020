@@ -12,7 +12,12 @@ public class SimpleServer {
     private static final long serialVersionUID = 2L;
     private HashSet<String> clients = new HashSet<>();
 
-
+    /**
+     *
+     * @param choice Choice between enum values generate keys for config.properties
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public void start(LocalhostOrLan choice) throws IOException, ClassNotFoundException {
         PropReader inst = PropReader.getInstance();
         try(ServerSocket serverSocket = new ServerSocket(inst.intreadfropmProp(choice.getPath(),choice.getPort()))) { // waiting for clients
@@ -23,7 +28,7 @@ public class SimpleServer {
                 SimpleMessage newM = connection.readMessage();
                 clients.add(newM.getSender());
                 System.out.println(newM);
-                connection.sendMessage(messageReturner(newM)); // TODO replace with method generating smth from previous message
+                connection.sendMessage(messageReturner(newM));
             }
         }
     }
@@ -43,7 +48,11 @@ public class SimpleServer {
     }
 
 
-
+    /**
+     *
+     * @param message link to analised message recieved from a client
+     * @return returns a message to send client
+     */
     private SimpleMessage messageReturner (SimpleMessage message){
         String string = null;
         switch (message.getText())     {
@@ -54,7 +63,7 @@ public class SimpleServer {
                 string = "Time of initial message departure: "+message.getDateTime();
                 break;
             default:
-                string = "recieved";
+                string = "received";
         }
         SimpleMessage answer = SimpleMessage.getMessage("server",string);
 

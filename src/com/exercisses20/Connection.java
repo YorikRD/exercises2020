@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
+/**
+ * No changes to original code
+ */
 public class Connection implements AutoCloseable {
     // Soclket object allows client to connect server & sever will can reciev
     private Socket socket;

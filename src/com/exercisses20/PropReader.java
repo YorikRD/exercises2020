@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-
+/**
+ * Singletone class responsible for reading data from config.prop files
+ */
 public class PropReader {
     private static PropReader instance = null;
     private static final long serialVersionUID = 2L;
@@ -12,6 +14,11 @@ public class PropReader {
     private PropReader() {
     }
 
+    /**
+     *
+     * @param path path to config.prop file
+     * @return Properties readed
+     */
     public Properties fullRead(String path){
         Properties configPr = new Properties();
         try(InputStream inputStream = PropReader.class.getClassLoader().getResourceAsStream(path) ) {
@@ -22,7 +29,10 @@ public class PropReader {
         return configPr;
     }
 
-
+    /**
+     * Access to class instance
+     * @return
+     */
     public static PropReader  getInstance (){
         PropReader propReader = null;
         if (instance == null) {
@@ -32,20 +42,25 @@ public class PropReader {
         return propReader;
     }
 
-
+    /**
+     *
+     * @param path path to config.prop file
+     * @param key key for propertie to read
+     * @return string readed
+     */
     public  String readFrProp(String path, String key){
-        String readed = null;
-        Properties configPr = new Properties();
-        try(InputStream inputStream = PropReader.class.getClassLoader().getResourceAsStream(path) ) {
-            configPr.load(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        readed = configPr.getProperty(key);
+        Properties configPr = fullRead(path);
+        String readed =  configPr.getProperty(key);
         return  readed;
     }
 
-    public  int intreadfropmProp(String path, String key){
+    /**
+     *
+     * @param path path to config.prop file
+     * @param key key for propertie to read
+     * @return return int value of propertie
+     */
+    public  int intreadfropmProp(String path, String key) throws NumberFormatException {
 
         return Integer.parseInt(readFrProp(path, key));
     }

@@ -14,6 +14,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * The most modified class of thiese task
+ */
 public class Client {
     private String ip;
     private int port;
@@ -21,8 +24,22 @@ public class Client {
     private static final long serialVersionUID = 1L;
     Comands comands;
 
+    /**
+     * Default constructor allowing to start with any ip or port
+     * @param ip
+     * @param port
+     */
+    public Client(String ip, int port) {
+        this.ip = ip;
+        this.port = port;
+        scanner = new Scanner(System.in);
+        this.comands = new Comands("config.properties");
+    }
 
-
+    /**
+     * Constructor working with default variants for running LAN or val Local Host
+     * @param choice
+     */
     public Client(LocalhostOrLan choice) {
         PropReader inst = PropReader.getInstance();
         String readed = inst.readFrProp(choice.getPath(), choice.getIp());
@@ -35,7 +52,10 @@ public class Client {
         this.comands = new Comands(choice.getPath());
     }
 
-
+    /**
+     * The main method calling all others is terminatable via /quit order
+     * @throws Exception
+     */
     public void start() throws Exception {
         System.out.println("Input username please");
         String name = scanner.nextLine();
@@ -48,6 +68,11 @@ public class Client {
         }
     }
 
+    /**
+     * Method sending and reading messages from server, responsible for handling /ping order
+     * @param message
+     * @throws Exception
+     */
     private void sendAndPrintMessage(SimpleMessage message) throws Exception {
         try (Connection connection = new Connection(new Socket(ip, port))) { //gear is autoclosble only becausw without multitherad on server connection must be closed after sending
             connection.sendMessage(message);
@@ -64,6 +89,11 @@ public class Client {
         }
     }
 
+    /**
+     * Method is responsible for special commands (Clients part)
+     * @param string input message
+     * @return int triggering sending normal message or special answer
+     */
     private int messageAnnaliser(String string) {
         if (comands.getAllcomands().containsKey(string)) {
             switch (string) {
