@@ -23,7 +23,7 @@ public class TopTenWords {
 //         цепочку не разрывать (пока не получите результирующую мапу)
         Map<String, Long> map = new HashMap<>();
         try {
-             map = Files.lines(Paths.get("poetry.txt"))
+             map = Files.lines(Paths.get("resources/sometxt.txt"))
                      .parallel() //emakes existing stream parallel
                      .peek(s -> s.toLowerCase())
                     .flatMap(str -> Arrays.stream(str.split("[^a-zA-Z]")))
