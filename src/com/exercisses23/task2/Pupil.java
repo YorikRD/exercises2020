@@ -1,7 +1,6 @@
 package com.exercisses23.task2;
 
 import com.Exercises07.pack.schoolTask.VariablesAndRand;
-import javafx.css.Match;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

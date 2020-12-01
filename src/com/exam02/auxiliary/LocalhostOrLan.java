@@ -1,4 +1,4 @@
-package com.exercisses20.auxiliary;
+package com.exam02.auxiliary;
 
 
 /**

@@ -49,7 +49,7 @@ public class Subscription {
     }
 
     private void setClient(PersonalData client) {
-        Objects.requireNonNull(client,"Subscription cannot be created without valid Client");
+        Objects.requireNonNull(client,"Subscription cannot be created without valid ClientMultiThread");
         this.client = client;
     }
 

@@ -103,7 +103,7 @@ public class Client {
                     }
                     return 1;
                 case "/exit":
-                    System.out.println("Finishing Client");
+                    System.out.println("Finishing ClientMultiThread");
                     return -1;
 
             }

@@ -1,4 +1,4 @@
-package com.exercisses20;
+package com.exam02;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 /**
  * No changes to original code
  */
-public class SimpleMessage implements Serializable {
+public class SimpleMessage2 implements Serializable {
     private String sender;
     private String text;
     private LocalDateTime dateTime;
     private static final long serialVersionUID = 2L;
 
-    public SimpleMessage(String sender, String text) {
+    public SimpleMessage2(String sender, String text) {
         this.sender = sender;
         this.text = text;
     }
@@ -50,7 +50,7 @@ public class SimpleMessage implements Serializable {
                 '}';
     }
 
-    public static SimpleMessage getMessage(String sender, String text){
-        return new SimpleMessage(sender, text);
+    public static SimpleMessage2 getMessage(String sender, String text){
+        return new SimpleMessage2(sender, text);
     }
 }

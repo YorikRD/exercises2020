@@ -137,7 +137,7 @@ public class FitnessClub {
         else zname = "Error";
         for (int i = 0; i < zone.length; i++) {
             if (zone[i] != null && zone[i].equals(sb)) {
-                System.out.println("Client " + sb + "leaves " + zname);
+                System.out.println("ClientMultiThread " + sb + "leaves " + zname);
                 zone[i] = null;
             }
         }
@@ -166,7 +166,7 @@ public class FitnessClub {
         System.out.println("The " + zoneN + " is occupied by :");
         for (int i = 0; i < zone.length; i++) {
             if (zone[i] != null)
-                System.out.println("Position #" + i + " Client " + zone[i].getClient() + " with sunbscription type of " + zone[i].getType());
+                System.out.println("Position #" + i + " ClientMultiThread " + zone[i].getClient() + " with sunbscription type of " + zone[i].getType());
         }
     }
 

@@ -18,9 +18,7 @@ public class Transaction implements Runnable{
             if (src.getBalance() <money) {
                 System.out.println("Sorry your balance is to low for thise operation");
                 return;
-            } else {
-                src.setBalance(src.getBalance()-money);
-            }
+            }  src.setBalance(src.getBalance()-money);
         }
             synchronized (dst){
                 dst.setBalance(dst.getBalance()+money);
