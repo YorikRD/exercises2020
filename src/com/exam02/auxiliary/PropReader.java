@@ -33,7 +33,7 @@ public class PropReader {
      * Access to class instance
      * @return
      */
-    public static PropReader getInstance (){
+    public static synchronized PropReader getInstance (){
         PropReader propReader = null;
         if (instance == null) {
             propReader = new PropReader();
