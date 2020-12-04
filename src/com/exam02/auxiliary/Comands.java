@@ -1,7 +1,5 @@
 package com.exam02.auxiliary;
 
-import com.exam02.PropReader;
-
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Set;

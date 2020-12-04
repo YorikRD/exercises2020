@@ -10,7 +10,7 @@ public enum LocalhostOrLan {
     ;
     private String port;
     private String ip;
-    static final public String path = "config.properties";
+    static final public String path = "com/exam02/auxiliary/config.properties";
 
     public String getPath() {
         return path;

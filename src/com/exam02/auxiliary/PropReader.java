@@ -1,4 +1,4 @@
-package com.exam02;
+package com.exam02.auxiliary;
 
 import java.io.IOException;
 import java.io.InputStream;

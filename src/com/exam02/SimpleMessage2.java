@@ -8,13 +8,15 @@ import java.time.LocalDateTime;
  */
 public class SimpleMessage2 implements Serializable {
     private String sender;
+    private int senderId;
     private String text;
     private LocalDateTime dateTime;
     private static final long serialVersionUID = 2L;
 
-    public SimpleMessage2(String sender, String text) {
+    public SimpleMessage2(String sender, String text, int senderId) {
         this.sender = sender;
         this.text = text;
+        this.senderId =senderId;
     }
 
     public String getSender() {
@@ -41,6 +43,11 @@ public class SimpleMessage2 implements Serializable {
         return dateTime;
     }
 
+    public int getSenderId() {
+        return senderId;
+    }
+
+
     @Override
     public String toString() {
         return "SimpleMessage2{" +
@@ -50,7 +57,7 @@ public class SimpleMessage2 implements Serializable {
                 '}';
     }
 
-    public static SimpleMessage2 getMessage(String sender, String text){
-        return new SimpleMessage2(sender, text);
+    public static SimpleMessage2 getMessage(String sender, String text,int senderId){
+        return new SimpleMessage2(sender, text,senderId);
     }
 }
