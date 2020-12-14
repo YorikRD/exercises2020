@@ -1,0 +1,9 @@
+1//  start thr game
+2//  load the game
+3//  Exit.
+
+// in game must be possibility to save the game. Serialisation and writing to file.
+// each one is an object
+
+Comand start = new StartCommand("Start the game");
+Comand end = new EndCommand("Leave");
