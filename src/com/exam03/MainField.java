@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MainField implements Serializable {
     private ChoiceClick currient;
     private LinkedList<ChoiceClick> route;
-    private transient Scanner scanner = new Scanner(System.in);
+    private transient Scanner scanner;
     private static final long serialVersionUID = 1L;
 
 
@@ -38,7 +38,7 @@ public class MainField implements Serializable {
     public MainField() {
         currient = new Menu(this);
         route = new LinkedList<>();
-        scanner = new Scanner(System.in);
+
     }
 
     public void setScanner() {
@@ -46,6 +46,7 @@ public class MainField implements Serializable {
     }
 
     protected void startGame(){
+        scanner = new Scanner(System.in);
         StringBuilder story = new StringBuilder(" In the beginning: '\n'");
         while (!currient.getClass().equals(ExitAction.class)){
             currient.run();

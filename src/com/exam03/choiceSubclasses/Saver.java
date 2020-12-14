@@ -1,6 +1,7 @@
 package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
+import com.exam03.choiceSubclasses.auxilary.SaveClass;
 
 import java.io.*;
 
@@ -36,7 +37,8 @@ public class Saver extends ForestAction {
         try (FileOutputStream fops = new FileOutputStream(thisGameFile);
                 ObjectOutputStream oops = new ObjectOutputStream(fops)
         ) {
-            oops.writeObject(wrap);
+            oops.writeObject(new SaveClass(wrap.getCurrient(), wrap.getRoute()));
+
         } catch (IOException e) {
             System.out.println("Save creation Failed");
             e.printStackTrace();

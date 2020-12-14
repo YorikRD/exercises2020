@@ -13,8 +13,8 @@ public class ForestInGameAction extends ForestAction{
     @Override
     public void run() {
         System.out.println(Strategy.values()[choice].getText());
-        System.out.println("  \" 3  - Load game  \";");
-        System.out.println("  \" 4  - Save game  \";");
+        System.out.println("3  - Load game  \";");
+        System.out.println("4  - Save game  \";");
         int newChoice = wrap.getScanner().nextInt();
         if (newChoice<=0 || newChoice>=5){
             System.out.println("input a correct command please");

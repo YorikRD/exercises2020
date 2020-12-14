@@ -17,4 +17,8 @@ public abstract class ForestAction implements ChoiceClick, Serializable {
     public void run() {
 
     }
+
+    public void setWrap(MainField wrap) {
+        this.wrap = wrap;
+    }
 }
