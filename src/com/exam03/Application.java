@@ -1,19 +1,11 @@
 package com.exam03;
 
-import com.exam03.choiceSubclasses.ForestInGameAction;
-import com.exam03.choiceSubclasses.Menu;
-import com.exam03.choiceSubclasses.Saver;
+import com.exam03.strategy.StrClass;
 
 public class Application {
     public static void main(String[] args) {
-        MainField game = new MainField();
+        StrClass strategy = new StrClass();
+        MainField game = new MainField(strategy);
         game.startGame();
-//        MainField game2 = new MainField();
-//        Menu menu = new Menu(game2);
-//        ForestInGameAction act0 = new ForestInGameAction(menu,game2,0);
-//        Saver testsaver = new Saver(act0,game2);
-//        testsaver.run();
-
-
     }
 }

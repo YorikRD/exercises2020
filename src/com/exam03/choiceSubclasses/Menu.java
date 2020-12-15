@@ -2,9 +2,10 @@ package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
 
-import java.io.Serializable;
-
-public class Menu implements ChoiceClick, Serializable {
+public class Menu implements ChoiceClick {
+    /**
+     * Link to the running MainField,for using its Scanner & Strategy
+     */
     private MainField wrap;
     private static final long serialVersionUID = 1L;
 
@@ -12,6 +13,9 @@ public class Menu implements ChoiceClick, Serializable {
         this.wrap = wrap;
     }
 
+    /**
+     * The method representing the games main menu.
+     */
     @Override
     public void run() {
         System.out.println("Welcome to the forest adventure '\n'" +

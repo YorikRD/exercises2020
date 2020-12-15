@@ -1,13 +1,17 @@
 package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
-import com.exam03.choiceSubclasses.auxilary.SaveClass;
+import com.exam03.auxilary.SaveClass;
 
 import java.io.*;
 
 public class Saver extends ForestAction {
 
-
+    /**
+     * The ChoiceClick implementation responsible for creating save game files.
+     * @param previous the Game state that will be saved
+     * @param wrap MainField owning the action cahin
+     */
     public Saver(ChoiceClick previous, MainField wrap) {
         super(previous, wrap);
     }

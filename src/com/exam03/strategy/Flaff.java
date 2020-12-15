@@ -1,4 +1,4 @@
-package com.exam03.choiceSubclasses.auxilary;
+package com.exam03.strategy;
 
 abstract public class Flaff {
     public static String txt0 ="Каждое утро Лисёнок просыпался, завтракал и шёл увидеться с Бельчонком. Это утро не было" +

@@ -1,10 +1,13 @@
 package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
-import com.exam03.choiceSubclasses.auxilary.SaveClass;
+import com.exam03.auxilary.SaveClass;
 
 import java.io.*;
 
+/**
+ * The ChoiceClick implementation responsible for loading files from save games.
+ */
 public class Load extends ForestAction {
     public Load(ChoiceClick previous, MainField wrap) {
         super(previous, wrap);

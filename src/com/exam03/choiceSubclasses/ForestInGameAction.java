@@ -1,8 +1,9 @@
 package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
+import com.exam03.strategy.StrClass;
 
-public class ForestInGameAction extends ForestAction{
+public class ForestInGameAction extends ForestAction {
     int choice;
 
     public ForestInGameAction(ChoiceClick previous, MainField wrap, int choice) {
@@ -12,34 +13,32 @@ public class ForestInGameAction extends ForestAction{
 
     @Override
     public void run() {
-        System.out.println(Strategy.values()[choice].getText());
-        System.out.println("3  - Load game  \";");
-        System.out.println("4  - Save game  \";");
+        StrClass thisStr = wrap.strategy;
+        System.out.println(wrap.strategy.getTxt(choice));
+        int forS = wrap.strategy.getLinks(choice).length+1;
+        int forL = forS + 1;
+        int forEx = forL + 1;
+        System.out.println(forS + "  - Save game  \";");
+        System.out.println(forL + "  - Load game  \";");
+        System.out.println(forEx + "  - Exit game  \";");
+
         int newChoice = wrap.getScanner().nextInt();
-        if (newChoice<=0 || newChoice>=5){
+        if (newChoice <= 0 || newChoice > forEx) {
             System.out.println("input a correct command please");
             run();
         }
-        switch (newChoice){
-            case 3:
-                wrap.setCurrient(new Load(this,wrap));
-                return;
-            case 4:
-                wrap.setCurrient(new Saver(this,wrap));
-                return;
-        }
-        int next = Strategy.values()[choice].getLinks()[newChoice-1];
-        if (next == -1){
-            System.out.println("Victory");
-            wrap.setCurrient(new Menu(wrap));
+        if (newChoice == forS) {
+            wrap.setCurrient(new Saver(this, wrap));
             return;
-        } else if (next == -2){
-            System.out.println("Defeat");
-            wrap.setCurrient(new Menu(wrap));
+        } else if (newChoice == forL) {
+            wrap.setCurrient(new Load(this, wrap));
+            return;
+        } else if (newChoice == forEx) {
+            wrap.setCurrient(new ExitAction());
             return;
         }
-
-        wrap.setCurrient(new ForestInGameAction(this,wrap,next));
+        int next = wrap.strategy.getLinks(choice)[newChoice-1];
+        wrap.setCurrient(new ForestInGameAction(this, wrap, next));
 
     }
 }
