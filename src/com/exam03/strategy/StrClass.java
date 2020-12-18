@@ -3,7 +3,7 @@ package com.exam03.strategy;
 /**
  * The enum is wrapen to the class just to allow other strategies to extend it
  */
-public class StrClass {
+public class StrClass implements IStrategy {
     /**
      * The enum containing the links logic
      */

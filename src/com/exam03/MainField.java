@@ -4,6 +4,7 @@ import com.exam03.choiceSubclasses.ChoiceClick;
 import com.exam03.choiceSubclasses.ExitAction;
 import com.exam03.choiceSubclasses.Menu;
 import com.exam03.strategy.Flaff;
+import com.exam03.strategy.IStrategy;
 import com.exam03.strategy.StrClass;
 
 import java.io.Serializable;
@@ -27,7 +28,7 @@ public class MainField implements Serializable {
     /**
      * For serialisation
      */
-    public final transient StrClass strategy;
+    public final transient IStrategy strategy;
 
     private static final long serialVersionUID = 1L;
 

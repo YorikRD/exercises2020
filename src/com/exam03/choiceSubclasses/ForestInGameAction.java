@@ -1,6 +1,7 @@
 package com.exam03.choiceSubclasses;
 
 import com.exam03.MainField;
+import com.exam03.strategy.IStrategy;
 import com.exam03.strategy.StrClass;
 
 public class ForestInGameAction extends ForestAction {
@@ -13,14 +14,14 @@ public class ForestInGameAction extends ForestAction {
 
     @Override
     public void run() {
-        StrClass thisStr = wrap.strategy;
+        IStrategy thisStr = wrap.strategy;
         System.out.println(wrap.strategy.getTxt(choice));
         int forS = wrap.strategy.getLinks(choice).length+1;
         int forL = forS + 1;
         int forEx = forL + 1;
-        System.out.println(forS + "  - Save game  \";");
-        System.out.println(forL + "  - Load game  \";");
-        System.out.println(forEx + "  - Exit game  \";");
+        System.out.println(" "+forS + "  - Save game  \";");
+        System.out.println(" "+forL + "  - Load game  \";");
+        System.out.println(" "+forEx + "  - Exit game  \";");
 
         int newChoice = wrap.getScanner().nextInt();
         if (newChoice <= 0 || newChoice > forEx) {
